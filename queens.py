@@ -1,14 +1,16 @@
 import random
 import numpy as np
+import matplotlib as mlt
+from matplotlib import pyplot
 
 _queenSet = [
-    [8,0,0,0,0,0,0,0,0], # 8 conflict(s)
-    [7,3,7,0,0,0,0,0,0], # 7 conflict(s)
-    [4,1,7,5,0,2,4,6,3], # 4 conflict(s)
-    [3,3,7,0,4,6,1,2,1], # 3 conflict(s)
-    [2,2,4,2,0,5,7,1,1], # 2 conflict(s)
-    [2,2,4,2,0,5,7,1,1], # 2 conflict(s)
-    [0,6,4,2,0,5,7,1,3]  # 0 conflict(s)
+    # [8,0,0,0,0,0,0,0,0], # 8 conflict(s)
+    # [7,3,7,0,0,0,0,0,0], # 7 conflict(s)
+    # [4,1,7,5,0,2,4,6,3], # 4 conflict(s)
+    # [3,3,7,0,4,6,1,2,1], # 3 conflict(s)
+    # [2,2,4,2,0,5,7,1,1], # 2 conflict(s)
+    # [2,2,4,2,0,5,7,1,1], # 2 conflict(s)
+    # [0,6,4,2,0,5,7,1,3]  # 0 conflict(s)
 ]
 
 
@@ -88,7 +90,7 @@ def removeLeastFit(x):
     #print(x)
 
 
-for i in range(95):
+for i in range(100):
     createQueen()
 
 def checkDupe(x):
@@ -140,3 +142,27 @@ while i > 0:
     i -=1
 
 print(sorted(_queenSet))
+print(len(_queenSet))
+
+data = [[1, 0, 1, 0, 1, 0, 1, 0],
+ [0,1,0,1,0,1,0,1],
+ [1, 0, 1, 0, 1, 0, 1, 0],
+ [0,1,0,1,0,1,0,1],
+ [1, 0, 1, 0, 1, 0, 1, 0],
+ [0,1,0,1,0,1,0,1],
+ [1, 0, 1, 0, 1, 0, 1, 0],
+ [0,1,0,1,0,1,0,1],
+ ]
+
+def convert(x):
+    global data
+    for i in range(8):
+        data[x[i+1]][i] = 2
+
+if _queenSet[0][0]==0:
+    convert(_queenSet[0])
+    
+
+pyplot.figure(figsize=(5,5),num=1)
+pyplot.imshow(data)
+pyplot.show()

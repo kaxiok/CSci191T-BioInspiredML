@@ -2,8 +2,11 @@
 CSUF-Spring-2023
 
 How to install numpy for Windows
-- python.exe -m pip install numpy
+- python.exe -m pip install numpy or pip3 install numpy
 - python.exe -m pip install --upgrade pip
+
+How to install matplotlib
+- pip3 install matplotlib
 
 N Queens
 - 8x8 size
