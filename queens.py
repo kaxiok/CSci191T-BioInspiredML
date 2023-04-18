@@ -117,6 +117,7 @@ _queenFitness = selectMostFit(_queenSet)
 #print(type(_queenFitness))
 #print(len(_queenFitness))
 
+
 i = 100000
 while i > 0:
     #print("Old:", _queenFitness)
@@ -141,6 +142,7 @@ while i > 0:
     #print("New:", set(_queenFitness))
     i -=1
 
+
 print(sorted(_queenSet))
 print(len(_queenSet))
 
@@ -154,15 +156,41 @@ data = [[1, 0, 1, 0, 1, 0, 1, 0],
  [0,1,0,1,0,1,0,1],
  ]
 
+def defaultData():
+    global data
+    data = [[1, 0, 1, 0, 1, 0, 1, 0],
+ [0,1,0,1,0,1,0,1],
+ [1, 0, 1, 0, 1, 0, 1, 0],
+ [0,1,0,1,0,1,0,1],
+ [1, 0, 1, 0, 1, 0, 1, 0],
+ [0,1,0,1,0,1,0,1],
+ [1, 0, 1, 0, 1, 0, 1, 0],
+ [0,1,0,1,0,1,0,1],
+ ]
+
+dataSol = []
+
 def convert(x):
     global data
     for i in range(8):
         data[x[i+1]][i] = 2
+    return data
 
-if _queenSet[0][0]==0:
-    convert(_queenSet[0])
-    
+# if _queenSet[0][0]==0:
+#     convert(_queenSet[0])
 
-pyplot.figure(figsize=(5,5),num=1)
-pyplot.imshow(data)
+sol = 0
+while _queenSet[i][0]==0:
+    dataSol.append(convert(_queenSet[i]))
+    print(dataSol[i])
+    defaultData()
+    sol +=1
+    i+=1
+
+print(sol)
+for i in range(sol):
+    pyplot.figure(figsize=(5,5),num=i)
+    pyplot.imshow(dataSol[i])
+
 pyplot.show()
+
