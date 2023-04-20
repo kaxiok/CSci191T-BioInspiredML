@@ -10,7 +10,7 @@ How to install matplotlib
 
 N Queens
 - 8x8 size
-- total combination of arrangement for size 8 is 64/((64-8)!/8!) = 4,426,165,368
+- total combination of arrangement for size 8 is 64!/((64-8)!/8!) = 4,426,165,368
 - select array size for simulation.
 - conflicts are a sum of the number of queens attacked
 
