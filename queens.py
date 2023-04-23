@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib as mlt
 from matplotlib import pyplot
 
+_setArray = [0,1,2,3,4,5,6,7]
 _queenSet = [
     # [8,0,0,0,0,0,0,0,0], # 8 conflict(s)
     # [7,3,7,0,0,0,0,0,0], # 7 conflict(s)
@@ -16,10 +17,13 @@ _queenSet = [
 
 
 def createQueen():
-    q = [0,random.randrange(0,8),random.randrange(0,8),random.randrange(0,8),
-         random.randrange(0,8),random.randrange(0,8),random.randrange(0,8),random.randrange(0,8),random.randrange(0,8)]
-    fitness(q)
-    _queenSet.append(q)
+    # q = [0,random.randrange(0,8),random.randrange(0,8),random.randrange(0,8),
+    #      random.randrange(0,8),random.randrange(0,8),random.randrange(0,8),random.randrange(0,8),random.randrange(0,8)]
+    _randomSet = _setArray
+    random.shuffle(_randomSet)
+    _randomSet = [0]+_randomSet
+    fitness(_randomSet)
+    _queenSet.append(_randomSet)
 
 # Checks the number of conflicts
 def fitness(x):
@@ -90,7 +94,7 @@ def removeLeastFit(x):
     #print(x)
 
 
-for i in range(100):
+for i in range(93):
     createQueen()
 
 def checkDupe(x):
@@ -109,6 +113,7 @@ def selectMostFit(x):
         mostFit.append(x[i])
     return mostFit
 
+print(_queenSet)
 _queenSet = checkDupe(_queenSet)
 _queenSet = sorted(_queenSet)
 #print(type(_queenSet))
@@ -124,7 +129,7 @@ while i > 0:
     # #print("before:",_queenSet)
     removeLeastFit(_queenSet)
     #print("after:",_queenSet)
-    if(len(_queenSet)<100):createQueen()
+    if(len(_queenSet)<92):createQueen()
     #print(_queenSet)
     index1 = random.randrange(0,5)
     index2 = random.randrange(0,5)
@@ -180,12 +185,15 @@ def convert(x):
 #     convert(_queenSet[0])
 
 sol = 0
+#print(len(_queenSet))
+i=0
 while _queenSet[i][0]==0:
     dataSol.append(convert(_queenSet[i]))
     print(dataSol[i])
     defaultData()
     sol +=1
     i+=1
+    
 
 print(sol)
 for i in range(sol):
